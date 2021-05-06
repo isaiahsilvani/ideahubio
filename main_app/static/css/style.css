@@ -5,6 +5,20 @@
   height: 50px;
   background-color: blue;
 }
-body {
-  background-color: lightblue;
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#detail-btn {
+  align-self: flex-end;
+  position: relative;
+  bottom: 0
+}
+
+img {
+  padding: 0.7rem;
 }
