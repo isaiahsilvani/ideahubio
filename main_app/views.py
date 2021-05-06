@@ -1,13 +1,26 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import UserCreationForm
+from .models import Idea, Photo, Employee
 
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 
 # Create your views here.
 def home(request):
   return render(request, 'home.html')
+
+# Create your CBV's here.
+class IdeaCreate(LoginRequiredMixin, CreateView):
+  model = Idea
+  fields = ['name', 'description', 'industry', 'is_public']
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
 
 def signup(request):
   error_message = ''
