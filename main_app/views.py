@@ -12,6 +12,11 @@ from django.views.generic import CreateView, DeleteView, UpdateView, ListView, D
 def home(request):
   return render(request, 'home.html')
 
+@login_required
+def ideas_detail(request, idea_id):
+  idea = Idea.objects.get(id=idea_id)
+  return render(request, 'ideas/detail.html', {'idea': idea})
+
 # Create your CBV's here.
 class IdeaCreate(LoginRequiredMixin, CreateView):
   model = Idea

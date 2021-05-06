@@ -48,7 +48,6 @@ INDUSTRIES = (
     ('40','Music Production'),
     ('41','Non-profit Organization'),
     ('42','Nutritional Supplements'),
-
     ('43','Oil & Gas'),
     ('44','Payday Lenders'),
     ('45','Pharmaceutical Manufacturing'),
@@ -84,7 +83,7 @@ class Idea(models.Model):
   industry = models.CharField(
     max_length = 70,
     choices=INDUSTRIES,
-    default=INDUSTRIES[len(INDUSTRIES) - 1]
+    default=INDUSTRIES[0]
   )
 
   def __str__(self):
