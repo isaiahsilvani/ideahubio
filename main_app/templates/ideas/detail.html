@@ -12,5 +12,6 @@
   <br>
   {{ idea.id }}
   <br><br>
-  <a href="{% url 'idea_delete' idea.id %}">Delete Idea</a>
+  <a href="{% url 'idea_delete' idea.id %}">Delete Idea</a><br>
+  <a href="{% url 'idea_update' idea.id %}">Edit Idea</a>
 {% endblock %}

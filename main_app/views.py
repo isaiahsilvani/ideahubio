@@ -54,4 +54,5 @@ class IdeaDelete(LoginRequiredMixin, DeleteView):
 
 class IdeaUpdate(LoginRequiredMixin, UpdateView):
   model = Idea
+  fields = ['name', 'description', 'industry', 'is_public']
 
