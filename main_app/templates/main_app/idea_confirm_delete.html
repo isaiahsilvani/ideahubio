@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Are you sure you want to delete {{ object.name }}?</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type='submit' value='Yes - Delete!' class='btn'>
+  <a href="{% url 'detail' idea.id %}">Cancel</a>
+</form>
+
+
+
+{% endblock %}

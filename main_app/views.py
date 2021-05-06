@@ -48,5 +48,10 @@ class IdeaCreate(LoginRequiredMixin, CreateView):
 class IdeaList(LoginRequiredMixin, ListView):
   model = Idea
 
+class IdeaDelete(LoginRequiredMixin, DeleteView):
+  model = Idea
+  success_url = '/ideas/'
 
+class IdeaUpdate(LoginRequiredMixin, UpdateView):
+  model = Idea
 

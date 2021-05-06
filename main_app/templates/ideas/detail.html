@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {{ idea.name }}
+  <h1>{{idea.name}} Details</h1>
   {{ idea.description }}
+  <br>
   {{ idea.industry }}
+  <br>
   {{ idea.date }}
+  <br>
   {{ idea.user }}
+  <br>
+  {{ idea.id }}
+  <br><br>
+  <a href="{% url 'idea_delete' idea.id %}">Delete Idea</a>
 {% endblock %}
