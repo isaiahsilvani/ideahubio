@@ -17,16 +17,6 @@ def ideas_detail(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
   return render(request, 'ideas/detail.html', {'idea': idea})
 
-# Create your CBV's here.
-class IdeaCreate(LoginRequiredMixin, CreateView):
-  model = Idea
-  fields = ['name', 'description', 'industry', 'is_public']
-
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
-
-
 def signup(request):
   error_message = ''
   if request.method == 'POST':
@@ -45,3 +35,18 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+# Create your CBV's here.
+class IdeaCreate(LoginRequiredMixin, CreateView):
+  model = Idea
+  fields = ['name', 'description', 'industry', 'is_public']
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+class IdeaList(LoginRequiredMixin, ListView):
+  model = Idea
+
+
+

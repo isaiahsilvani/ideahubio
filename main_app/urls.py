@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('create_idea', views.IdeaCreate.as_view(), name='create_idea'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('ideas/', views.IdeaList.as_view(), name='list_ideas'),
     path('ideas/<int:idea_id>', views.ideas_detail, name='detail'),
     #PASSWORD RESET URLS
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
