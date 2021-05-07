@@ -14,7 +14,12 @@
   <br><br>
 
   {% if idea.user == user %}
-  <a href="{% url 'idea_delete' idea.id %}">Delete Idea</a><br>
-  <a href="{% url 'idea_update' idea.id %}">Edit Idea</a>
+    <a href="{% url 'idea_delete' idea.id %}">Delete Idea</a><br>
+    <a href="{% url 'idea_update' idea.id %}">Edit Idea</a>
+    {% if idea.is_public == False %}
+      <a href="{%  url 'make_public' idea.id%}">Make Public</a>
+    {% else %}
+      <a href="{%  url 'make_private' idea.id%}">Make Private</a>
+    {% endif %}
   {% endif %}
 {% endblock %}

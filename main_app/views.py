@@ -21,6 +21,18 @@ def public_list(request):
   idea = Idea.objects.all()
   return render(request, 'main_app/public_list.html', {'idea': idea})
 
+def make_public(request, idea_id):
+  idea = Idea.objects.get(id=idea_id)
+  idea.is_public = True
+  idea.save()
+  return redirect('detail', idea_id=idea_id)
+
+def make_private(request, idea_id):
+  idea = Idea.objects.get(id=idea_id)
+  idea.is_public = False
+  idea.save()
+  return redirect('detail', idea_id=idea_id)
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':
