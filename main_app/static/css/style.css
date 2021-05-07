@@ -54,3 +54,11 @@ img {
 .detail-img-container {
   width: 40rem;
 }
+
+.fa-minus-circle {
+  color: red
+}
+
+.img-wrap { position: relative; }
+.img-wrap img { display: block; }
+.img-wrap .fa-minus-circle { position: absolute; bottom:15px; left:15px; }

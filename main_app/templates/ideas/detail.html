@@ -7,7 +7,10 @@
     <div class="col">
 
       <div class="card">
-      <img id='detail_logo' src="{{ idea.logo_url }}" style="width: 18rem;" >
+      <div class="img-wrap">
+        <img id='detail_logo' src="{{ idea.logo_url }}" style="width: 18rem;" >
+        <a href="#"><i class="fas fa-minus-circle"></i></a>
+      </div>
       <form action="{% url 'add_logo' idea.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
         {% csrf_token %}
         <input type="file" name="photo-file">
