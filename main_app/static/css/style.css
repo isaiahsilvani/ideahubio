@@ -22,3 +22,12 @@ main {
 img {
   padding: 0.7rem;
 }
+
+#navlogo {
+  padding: 0;
+  margin: 0
+}
+
+.navbar-brand {
+  margin-left: 1rem;
+}
