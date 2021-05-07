@@ -31,3 +31,24 @@ img {
 .navbar-brand {
   margin-left: 1rem;
 }
+
+.form-block {
+  background-color: lightcoral;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  padding: 3rem;
+  margin-top: 4rem;
+  border-radius: 30px;
+}
+
+.form-block input {
+  width: 85%;
+}
+
+#id_email {
+  width: 80%;
+}
+

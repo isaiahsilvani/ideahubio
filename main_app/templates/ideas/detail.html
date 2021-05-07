@@ -12,6 +12,9 @@
   <br>
   {{ idea.id }}
   <br><br>
+
+  {% if idea.user == user %}
   <a href="{% url 'idea_delete' idea.id %}">Delete Idea</a><br>
   <a href="{% url 'idea_update' idea.id %}">Edit Idea</a>
+  {% endif %}
 {% endblock %}
