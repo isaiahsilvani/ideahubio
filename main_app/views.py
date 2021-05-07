@@ -25,6 +25,7 @@ def ideas_detail(request, idea_id):
 
 def public_list(request):
   idea = Idea.objects.filter(is_public=True)
+  idea = idea.exclude(user=request.user)
   return render(request, 'main_app/public_list.html', {'idea': idea})
 
 def make_public(request, idea_id):
