@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col">
 
-      <div class="card">
+      <div class="card" style="width: 18rem;">
       <div class="img-wrap">
         <img id='detail_logo' src="{{ idea.logo_url }}" style="width: 18rem;" >
         <a href="{% url 'remove_logo' idea.id %}"><i class="fas fa-times"></i></a>
@@ -19,12 +19,19 @@
       </form>
       </form>
       </div>
-
-
     </div>
+
     <div class="col">
-      CONTENT HERE
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h2 class="card-title">{{ idea.name }}</h2>
+          <h4 class="card-subtitle mb-2 text-muted">{{ idea.industry }}</h4>
+          <p class="card-text">{{ idea.description }}</p>
+          <a class="btn btn-primary" href="{% url 'idea_delete' idea.id %}" class="card-link">Delete Idea</a>
+        </div>
+      </div>
     </div>
+
     <div class="w-100"></div>
     <div class="col">Column</div>
     <div class="col">Column</div>
