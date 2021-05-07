@@ -18,8 +18,12 @@
     <a id='detail-btn' href="{% url 'detail' idea.id %}" class="btn btn-primary align-self-end">View Details</a>
   </div>
 </div>
-{% endif %}
 
+
+
+{% endif %}
+{% empty %}
+<h1>You don't have amazing ideas yet</h1>
 {% endfor %}
 
 {% endblock %}

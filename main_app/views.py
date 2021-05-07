@@ -24,7 +24,7 @@ def ideas_detail(request, idea_id):
   return render(request, 'ideas/detail.html', {'idea': idea})
 
 def public_list(request):
-  idea = Idea.objects.all()
+  idea = Idea.objects.filter(is_public=True)
   return render(request, 'main_app/public_list.html', {'idea': idea})
 
 def make_public(request, idea_id):
