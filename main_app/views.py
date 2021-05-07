@@ -45,6 +45,12 @@ def delete_photo(request, photo_id, idea_id):
   Photo.objects.get(id=photo_id).delete()
   return redirect('detail', idea_id=idea_id)
 
+def delete_logo(request, idea_id):
+  idea = Idea.objects.get(id=idea_id)
+  idea.logo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/ProhibitionSign2.svg/1200px-ProhibitionSign2.svg.png"
+  idea.save()
+  return redirect('detail', idea_id=idea_id)
+
 
 def add_photo(request, idea_id):
   # photo-file will be the "name" attribute on the <input type="file">

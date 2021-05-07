@@ -9,7 +9,7 @@
       <div class="card">
       <div class="img-wrap">
         <img id='detail_logo' src="{{ idea.logo_url }}" style="width: 18rem;" >
-        <a href="#"><i class="fas fa-minus-circle"></i></a>
+        <a href="{% url 'remove_logo' idea.id %}"><i class="fas fa-times"></i></a>
       </div>
       <form action="{% url 'add_logo' idea.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
         {% csrf_token %}

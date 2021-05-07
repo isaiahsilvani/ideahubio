@@ -55,10 +55,10 @@ img {
   width: 40rem;
 }
 
-.fa-minus-circle {
-  color: red
+.fa-times {
+  color: white
 }
 
 .img-wrap { position: relative; }
 .img-wrap img { display: block; }
-.img-wrap .fa-minus-circle { position: absolute; bottom:15px; left:15px; }
+.img-wrap .fa-times { position: absolute; bottom:15px; left:15px; }
