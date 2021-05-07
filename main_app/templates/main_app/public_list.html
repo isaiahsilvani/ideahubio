@@ -6,7 +6,7 @@
 
   <!-- If idea's user == current user, do nothing. Else, display some cards-->
   {% if idea.user == user %}
-  {% else %}
+  {% elif idea.is_public == True %}
   <div class="card text-center" style="width: 22rem; margin: 1rem">
   <img id='logo_img' class="card-img-top mx-auto" src="{{ idea.logo_url }}" alt="Card image cap" style="height: 15em; width: 15em">
   <div class="card-body">
@@ -17,7 +17,7 @@
     {% endif %}
 
     <p class="card-text">{{ idea.description }}</p>
-    <button id='detail-btn' href="{% url 'detail' idea.id %}" class="btn btn-primary align-self-end">View Details</button>
+    <a id='detail-btn' href="{% url 'detail' idea.id %}" class="btn btn-primary align-self-end">View Details</a>
   </div>
 </div>
 {% endif %}
