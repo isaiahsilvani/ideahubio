@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for idea in idea %}
+
+  <!-- If idea's user == current user, do nothing. Else, display some cards-->
+  {% if idea.user == user %}
+  {% else %}
+  <div class="card text-center" style="width: 22rem; margin: 1rem">
+  <img id='logo_img' class="card-img-top mx-auto" src="{{ idea.logo_url }}" alt="Card image cap" style="height: 15em; width: 15em">
+  <div class="card-body">
+    <h5 class="card-title">{{ idea.name }}</h5>
+
+    {% if idea.user != user%}
+    <p class="card-subtitle p-1">Created by {{ idea.user }}</p>
+    {% endif %}
+
+    <p class="card-text">{{ idea.description }}</p>
+    <button id='detail-btn' href="{% url 'detail' idea.id %}" class="btn btn-primary align-self-end">View Details</button>
+  </div>
+</div>
+{% endif %}
+
+{% endfor %}
+
+{% endblock %}

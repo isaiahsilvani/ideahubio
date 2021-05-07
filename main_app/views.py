@@ -17,6 +17,10 @@ def ideas_detail(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
   return render(request, 'ideas/detail.html', {'idea': idea})
 
+def public_list(request):
+  idea = Idea.objects.all()
+  return render(request, 'main_app/public_list.html', {'idea': idea})
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':

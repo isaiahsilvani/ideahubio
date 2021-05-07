@@ -10,6 +10,7 @@ urlpatterns = [
     path('ideas/<int:idea_id>', views.ideas_detail, name='detail'),
     path('ideas/delete/<int:pk>', views.IdeaDelete.as_view(), name='idea_delete'),
     path('ideas/update/<int:pk>', views.IdeaUpdate.as_view(), name='idea_update'),
+    path('public/', views.public_list, name='list_public'),
     #PASSWORD RESET URLS
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
