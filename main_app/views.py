@@ -8,6 +8,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 
+import uuid
+import boto3
+
+S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
+BUCKET = 'idea-hub-bucket'
+
 # Create your views here.
 def home(request):
   return render(request, 'home.html')
@@ -32,6 +38,32 @@ def make_private(request, idea_id):
   idea.is_public = False
   idea.save()
   return redirect('detail', idea_id=idea_id)
+
+
+def delete_photo(request, photo_id, idea_id):
+  Photo.objects.get(id=photo_id).delete()
+  return redirect('detail', idea_id=idea_id)
+
+
+def add_photo(request, idea_id):
+  # photo-file will be the "name" attribute on the <input type="file">
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    # need a unique "key" for S3 / needs image file extension too
+    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+    # just in case something goes wrong
+    try:
+      s3.upload_fileobj(photo_file, BUCKET, key)
+      # build the full url string
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      # we can assign to cat_id or cat (if you have a cat object)
+      photo = Photo(url=url, idea_id=idea_id)
+      photo.save()
+    except Exception as err:
+      print('An error occurred uploading file to S3: %s' % err)
+  return redirect('detail', idea_id=idea_id)
+
 
 def signup(request):
   error_message = ''

@@ -13,6 +13,8 @@ urlpatterns = [
     path('public/', views.public_list, name='list_public'),
     path('ideas/makepublic/<int:idea_id>', views.make_public, name='make_public'),
     path('ideas/makeprivate/<int:idea_id>', views.make_private, name='make_private'),
+    path('ideas/<int:idea_id>/add_photo/', views.add_photo, name='add_photo'),
+    path('ideas/<int:photo_id>/<int:idea_id>/delete_photo/', views.delete_photo, name='delete_photo'),
     #PASSWORD RESET URLS
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),

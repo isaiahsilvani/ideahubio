@@ -2,6 +2,7 @@
 
 {% block content %}
   <h1>{{idea.name}} Details</h1>
+  <img id='detail_logo' src="{{ idea.logo_url }}" style="width: 15rem;" >
   {{ idea.description }}
   <br>
   {{ idea.industry }}
@@ -11,7 +12,15 @@
   {{ idea.user }}
   <br>
   {{ idea.id }}
-  <br><br>
+  <br><br><br><br>
+
+  <form action="{% url 'add_photo' idea.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+      {% csrf_token %}
+      <input type="file" name="photo-file">
+      <br><br>
+      <input type="submit" class="btn" value="Upload Photo">
+    </form>
+    </form>
 
   {% if idea.user == user %}
     <a href="{% url 'idea_delete' idea.id %}">Delete Idea</a><br>
@@ -22,4 +31,14 @@
       <a href="{%  url 'make_private' idea.id%}">Make Private</a>
     {% endif %}
   {% endif %}
+
+    {% for photo in idea.photo_set.all %}
+      <div class='detail-img-container'>
+        <img class="responsive-img card-panel" src="{{photo.url}}">
+        <a class='btn btn-primary' href={% url 'delete_photo' photo.id idea.id%}>Delete</a>
+      </div>
+    {% empty %}
+      <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+    {% endfor %}
+     
 {% endblock %}

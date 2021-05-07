@@ -41,14 +41,16 @@ img {
   text-align: center;
   padding: 3rem;
   margin-top: 4rem;
+  width: 80%;
+  height: 30rem;
   border-radius: 30px;
 }
 
 .form-block input {
-  width: 85%;
+  width: 90%;
+  margin: 0.6rem;
 }
 
-#id_email {
-  width: 80%;
+.detail-img-container {
+  width: 40rem;
 }
-
