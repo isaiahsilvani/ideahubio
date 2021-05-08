@@ -40,21 +40,25 @@ def make_private(request, idea_id):
   idea.save()
   return redirect('detail', idea_id=idea_id)
 
-def update_employee(request, idea_id, employee_id):
-  idea = Idea.objects.get(id=idea_id)
-  employee = Employee.objects.get(id=employee_id)
-  return render(request, 'main_app/employee_form.html', {
-    'idea': idea,
-    'employee': employee
-  })
+# def update_employee(request, idea_id, employee_id):
+#   idea = Idea.objects.get(id=idea_id)
+#   employee = Employee.objects.get(id=employee_id)
+#   return render(request, 'main_app/employee_form.html', {
+#     'idea': idea,
+#     'employee': employee
+#   })
 
-def update_employee_done(request, idea_id, employee_id):
-  employee = Employee.objects.get(id=idea_id)
-  employee.auth_level = request.POST['authlevel']
-  employee.role = request.POST['role']
-  employee.function = request.POST['function']
+class UpdateEmployee(UpdateView):
+  model = Employee
+  fields = ['role', 'function', 'auth_level']
+
+def update_employee_done(request, employee_id):
+  employee = Employee.objects.get(id=employee_id)
+  employee.auth_level = request.POST.get('authlevel')
+  employee.role = request.POST.get('role')
+  employee.function = request.POST.get('function')
   employee.save()
-  return redirect('detail', idea_id=idea_id)
+  return redirect('detail', idea_id=employee.idea_id)
 
 
 

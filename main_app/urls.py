@@ -19,8 +19,8 @@ urlpatterns = [
     path('ideas/<int:photo_id>/<int:idea_id>/delete_photo/', views.delete_photo, name='delete_photo'),
     path('ideas/<int:idea_id>/add_employee/', views.add_employee, name='add_employee'),
     path('ideas/<int:idea_id>/<int:employee_id>/delete_employee/', views.delete_employee, name='delete_employee'),
-    path('ideas/<int:idea_id>/<int:employee_id>/update_employee/', views.update_employee, name='update_employee'),
-    path('ideas/<int:idea_id>/<int:employee_id>/update_employee_done/', views.update_employee_done, name='update_employee'),
+    path('ideas/<int:pk>/update_employee/', views.UpdateEmployee.as_view(), name='update_employee'),
+    path('ideas/<int:employee_id>/update_employee_done/', views.update_employee_done, name='update_employee_done'),
     #PASSWORD RESET URLS
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),

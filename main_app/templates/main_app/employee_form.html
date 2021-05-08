@@ -3,11 +3,11 @@
 
 
 {% block content %}
-  <!-- <div class='employee_form'>
+  <div class='employee_form'>
     <h1>Edit Employee #{{employee.id}}</h1>
     <h1> Create a new idea </h1>
 
-    <form action="" method="post">
+    <form action="{% url 'update_employee_done' employee.id%}" method="post">
       {% csrf_token %}
       <table>
         <thead>
@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <td><label for='function'>Job Function</label></td>
-            <td><input type="text" name='role' value="{{ employee.function }}"></td>
+            <td><input type="text" name='function' value="{{ employee.function }}"></td>
           </tr>
           <tr>
             <td><label for='authlevel'>Authorization</label></td>
@@ -32,5 +32,5 @@
       </table>
       <input type='submit' value='Submit' class='btn'>
     </form>
-  </div> -->
+  </div>
 {% endblock %}

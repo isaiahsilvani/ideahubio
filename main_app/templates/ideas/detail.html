@@ -54,10 +54,10 @@
     </div>
     <br>
     <div class='employee-list' style='display: flex; justify-content: center;'>
-      <table>
+      <table style='text-align: center'>
         <thead>
           <tr>
-            <th>Edit / Delete</th>
+            <th>Controls</th>
             <th>Role</th>
             <th>Function</th>
             <th>Authorization</th>
@@ -67,7 +67,7 @@
         {% for employee in idea.employee_set.all %}
           <tr>
             <td>
-              <a href="{% url 'update_employee' idea.id employee.id%}"><i class="fas fa-user-edit"></i></a>
+              <a href="{% url 'update_employee' employee.id%}"><i class="fas fa-user-edit"></i></a>
               <a href="{% url 'delete_employee' idea.id employee.id%}"><i class="fas fa-trash-alt"></i></a>
             </td>
             <td>{{ employee.role }}</td>
