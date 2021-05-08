@@ -52,8 +52,30 @@
         <input type='submit' value='Add Employee'>
       </form>
     </div>
-    <div class='employee-list'>
-      
+    <br>
+    <div class='employee-list' style='display: flex; justify-content: center;'>
+      <table>
+        <thead>
+          <tr>
+            <th>Edit / Delete</th>
+            <th>Role</th>
+            <th>Function</th>
+            <th>Authorization</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for employee in idea.employee_set.all %}
+          <tr>
+            <td>EDIT DELETE</td>
+            <td>{{ employee.role }}</td>
+            <td>{{ employee.function}}</td>
+            <td>{{ employee.auth_level }}</td>
+          <tr>
+        {% empty %}
+          <h4> You don't have any employees yet </h4>
+        {% endfor %}
+        </tbody>
+      </table>
     </div>
 
   </div>

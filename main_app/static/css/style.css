@@ -111,3 +111,13 @@ img {
 #logocard {
   text-align: left;
 }
+
+.employee-list {
+  justify-content: center;
+}
+
+table {
+  text-align: left;
+  justify-content: space-between;
+  width: 95%;
+}
