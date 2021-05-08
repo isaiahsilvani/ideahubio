@@ -11,6 +11,7 @@ main {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  height: 100%;
 }
 
 #detail-btn {
@@ -60,5 +61,53 @@ img {
 }
 
 .img-wrap { position: relative; }
-.img-wrap img { display: block; }
+.img-wrap img 
+{ display: block; }
 .img-wrap .fa-times { position: absolute; bottom:15px; left:15px; }
+
+.detail-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: 
+    "logo idea_details"
+    "org org"
+    "photos-section photos-section";
+  width: 100%;
+  height: 85vh;
+}
+
+.logo-section {
+  background-color: lightblue;
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  grid-area: logo;
+}
+
+.details-section {
+  background-color: lightgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: idea_details;
+}
+
+.photos-section {
+  grid-area: photos-section;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.org-section {
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  grid-area: org;
+}

@@ -17,6 +17,7 @@ urlpatterns = [
     path('ideas/<int:idea_id>/add_logo', views.add_logo, name='add_logo'),
     path('ideas/<int:idea_id>/remove_logo/', views.delete_logo, name='remove_logo'),
     path('ideas/<int:photo_id>/<int:idea_id>/delete_photo/', views.delete_photo, name='delete_photo'),
+    path('ideas/<int:idea_id>/add_employee/', views.add_employee, name='add_employee'),
     #PASSWORD RESET URLS
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),

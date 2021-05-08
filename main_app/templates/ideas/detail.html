@@ -1,85 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-
-      <div class="card" style="width: 18rem;">
-      <div class="img-wrap">
-        <img id='detail_logo' src="{{ idea.logo_url }}" style="width: 18rem;" >
-        <a href="{% url 'remove_logo' idea.id %}"><i class="fas fa-times"></i></a>
-      </div>
-      <form action="{% url 'add_logo' idea.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-        {% csrf_token %}
-        <input type="file" name="photo-file">
-        <br><br>
-        <input type="submit" class="btn btn-primary" value="Upload Photo">
-      </form>
-      </form>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h2 class="card-title">{{ idea.name }}</h2>
-          <h4 class="card-subtitle mb-2 text-muted">{{ idea.industry }}</h4>
-          <p class="card-text">{{ idea.description }}</p>
-          <a class="btn btn-primary" href="{% url 'idea_delete' idea.id %}" class="card-link">Delete Idea</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-100"></div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
+<div class='detail-page'>
+  <div class='logo-section'>
+    LOGO
   </div>
+
+  <div class='details-section'>
+    DETAILS
+  </div>
+
+  <div class='org-section'>
+    ORG
+  </div>
+
+  <div class='photos-section'>
+    PHOTOS
+  </div>
+
 </div>
 
-
-
-
-
-  <!-- <h1>{{idea.name}} Details</h1>
-  <img id='detail_logo' src="{{ idea.logo_url }}" style="width: 15rem;" >
-  {{ idea.description }}
-  <br>
-  {{ idea.industry }}
-  <br>
-  {{ idea.date }}
-  <br>
-  {{ idea.user }}
-  <br>
-  {{ idea.id }}
-  <br><br><br><br>
-
-  <form action="{% url 'add_photo' idea.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-      {% csrf_token %}
-      <input type="file" name="photo-file">
-      <br><br>
-      <input type="submit" class="btn" value="Upload Photo">
-    </form>
-    </form>
-
-  {% if idea.user == user %}
-    <a href="{% url 'idea_delete' idea.id %}">Delete Idea</a><br>
-    <a href="{% url 'idea_update' idea.id %}">Edit Idea</a>
-    {% if idea.is_public == False %}
-      <a href="{%  url 'make_public' idea.id%}">Make Public</a>
-    {% else %}
-      <a href="{%  url 'make_private' idea.id%}">Make Private</a>
-    {% endif %}
-  {% endif %}
-
-    {% for photo in idea.photo_set.all %}
-      <div class='detail-img-container'>
-        <img class="responsive-img card-panel" src="{{photo.url}}">
-        <a class='btn btn-primary' href={% url 'delete_photo' photo.id idea.id%}>Delete</a>
-      </div>
-    {% empty %}
-      <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-    {% endfor %}
-      -->
 {% endblock %}

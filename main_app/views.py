@@ -72,6 +72,10 @@ def add_photo(request, idea_id):
   return redirect('detail', idea_id=idea_id)
 
 
+def add_employee(request, idea_id):
+  employee = Employee()
+
+
 def add_logo(request, idea_id):
   # get the idea, remove the old URL, replace it.
   idea = Idea.objects.get(id=idea_id)
