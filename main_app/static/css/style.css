@@ -1,8 +1,8 @@
 .content {
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 35px);
 }
 .footer {
-  height: 50px;
+  height: 35px;
   background-color: blue;
 }
 
@@ -68,7 +68,7 @@ img {
 .detail-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 45% 20% 20%;
   grid-template-areas: 
     "logo idea_details"
     "org org"
@@ -110,4 +110,8 @@ img {
   align-content: center;
   align-items: center;
   grid-area: org;
+}
+
+#logocard {
+  text-align: left;
 }

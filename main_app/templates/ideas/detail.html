@@ -1,23 +1,65 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class='detail-page'>
-  <div class='logo-section'>
-    LOGO
-  </div>
 
-  <div class='details-section'>
-    DETAILS
+<div id='logo_card' class="card text-center" style="width: 40%; margin: 1rem; min-width: 285px;">
+  <div class="img-wrap">
+    <img id='detail_logo' src="{{ idea.logo_url }}" style="width: 18rem; justify-self: center;" >
+    <a href="{% url 'remove_logo' idea.id %}"><i class="fas fa-times"></i></a>
   </div>
-
-  <div class='org-section'>
-    ORG
+  <div class="card-body" style='text-align: left;'>
+    <form action="{% url 'add_logo' idea.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+      {% csrf_token %}
+        <input type="file" name="photo-file">
+        <input type="submit" class="btn btn-primary" value="Upload Photo" style='margin-top: 0.4rem;'>
+    </form>
   </div>
+</div>
 
-  <div class='photos-section'>
-    PHOTOS
+<div class="card text-center" style="width: 40%; margin: 1rem; min-width: 285px;">
+  <div class="card-body" style='text-align: left;'>
+    <h2 class="card-title">{{ idea.name }}</h2>
+    <h4 class='card-subtitle'>{{ idea.industry }}</h4>
+    {% if idea.user != user%}
+    <p class="card-subtitle">Created by {{ idea.user }}</p>
+    {% endif %}
+    <br>
+    <h5>Description: </h5>
+    <p class="card-text">{{ idea.description }}</p>
+    <a id='detail-btn' href="{% url 'idea_update' idea.id %}" class="btn btn-primary align-self-end">Edit Idea</a>
+    <a id='detail-btn' href="{% url 'idea_delete' idea.id %}" class="btn btn-primary align-self-end">Delete Idea</a>
   </div>
+</div>
 
+<div class="card text-center" style="width: 82.5%; margin: 1rem; min-width: 285px;">
+  <div class="card-body" style='text-align: left;'>
+    <h4 style='text-align: left;'>Organizational Structure</h4>
+    <div clas='employee-form'>
+      
+    </div>
+
+  </div>
+</div>
+
+<div class="card text-center" style="width: 82.5%; margin: 1rem; min-width: 285px;">
+  <div class="card-body" style='text-align: left;'>
+    <h4>Additional Photos</h4>
+    <form action="{% url 'add_photo' idea.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+      {% csrf_token %}
+      <input type="submit" class="btn btn-primary" value="Upload Photo">
+      <input type="file" name="photo-file">
+    </form>
+
+    {% for photo in idea.photo_set.all %}
+    <div class="img-wrap">
+      <img id='detail_logo' src="{{ photo.url }}" style="width: 18rem; justify-self: center;" >
+      <a href="{% url 'remove_logo' idea.id %}"><i class="fas fa-times"></i></a>
+    </div>
+  {% empty %}
+    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+  {% endfor %}
+
+  </div>
 </div>
 
 {% endblock %}
