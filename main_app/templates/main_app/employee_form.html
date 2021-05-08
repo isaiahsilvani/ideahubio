@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% block title %} IdeaHub.io | {% if object %}Edit {% else %}Create New {% endif %}Idea{% endblock %}
+
+
+{% block content %}
+  <!-- <div class='employee_form'>
+    <h1>Edit Employee #{{employee.id}}</h1>
+    <h1> Create a new idea </h1>
+
+    <form action="" method="post">
+      {% csrf_token %}
+      <table>
+        <thead>
+          <tr>
+            <th></th><th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><label for='role'>Role</label></td>
+            <td><input type="text" name='role' value="{{ employee.role }}"></td>
+          </tr>
+          <tr>
+            <td><label for='function'>Job Function</label></td>
+            <td><input type="text" name='role' value="{{ employee.function }}"></td>
+          </tr>
+          <tr>
+            <td><label for='authlevel'>Authorization</label></td>
+            <td><input type="text" name='authlevel' value="{{ employee.auth_level }}"></td>
+          </tr>
+        </tbody>
+      </table>
+      <input type='submit' value='Submit' class='btn'>
+    </form>
+  </div> -->
+{% endblock %}

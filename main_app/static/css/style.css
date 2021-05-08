@@ -121,3 +121,19 @@ table {
   justify-content: space-between;
   width: 95%;
 }
+
+.fa-trash-alt {
+  margin-left: 1.7rem;
+}
+
+.fa-user-edit {
+  margin-left: 0.5rem;
+}
+
+.employee_form {
+  flex-direction: column;
+}
+
+.employee_form td {
+  margin: 54rem;
+}

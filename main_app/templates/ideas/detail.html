@@ -66,7 +66,10 @@
         <tbody>
         {% for employee in idea.employee_set.all %}
           <tr>
-            <td>EDIT DELETE</td>
+            <td>
+              <a href="{% url 'update_employee' idea.id employee.id%}"><i class="fas fa-user-edit"></i></a>
+              <a href="{% url 'delete_employee' idea.id employee.id%}"><i class="fas fa-trash-alt"></i></a>
+            </td>
             <td>{{ employee.role }}</td>
             <td>{{ employee.function}}</td>
             <td>{{ employee.auth_level }}</td>
