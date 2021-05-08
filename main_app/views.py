@@ -73,7 +73,14 @@ def add_photo(request, idea_id):
 
 
 def add_employee(request, idea_id):
-  employee = Employee()
+  employee = Employee.objects.create(
+    role=request.POST['role'], 
+    auth_level=request.POST['authlevel'], 
+    function=request.POST['function'],
+    idea_id = idea_id
+  )
+  employee.save()
+  return redirect('detail', idea_id=idea_id)
 
 
 def add_logo(request, idea_id):

@@ -56,10 +56,6 @@ img {
   width: 40rem;
 }
 
-.fa-times {
-  color: white
-}
-
 .img-wrap { position: relative; }
 .img-wrap img 
 { display: block; }
