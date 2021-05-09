@@ -86,7 +86,7 @@ class Idea(models.Model):
   )
 
   def __str__(self):
-    return f"{self.get_industry_display()}"
+    return f"{self.name}"
   
   def get_absolute_url(self):
       return reverse("detail", kwargs={"idea_id": self.id})
@@ -99,6 +99,13 @@ class Employee(models.Model):
 
   def __str__(self):
     return f"Employee for idea_id {self.idea_id}"
+
+class Liked(models.Model):
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"{self.user.username}"
   
 
 # class Industry(models.Model):

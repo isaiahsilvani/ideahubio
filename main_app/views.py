@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import UserCreationForm
-from .models import Idea, Photo, Employee
+from .models import Idea, Photo, Employee, Liked
 
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -60,6 +60,11 @@ def update_employee_done(request, employee_id):
   employee.save()
   return redirect('detail', idea_id=employee.idea_id)
 
+def like_idea(request, idea_id):
+  idea = Idea.objects.get(id=idea_id)
+  liked = Liked.objects.create(user=request.user, idea=idea)
+  liked.save()
+  return redirect('detail', idea_id=idea_id)
 
 
 def delete_photo(request, photo_id, idea_id):

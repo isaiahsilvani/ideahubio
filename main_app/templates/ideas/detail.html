@@ -40,6 +40,12 @@
     {% endif %}
   {% endif %}
 
+  {% if idea.user != user and not user in idea.liked_set.all %}
+      <a href="{% url 'like_idea' idea.id %}" class='btn btn-primary'>Like</a>
+  {% else %}
+      <a href="#" class='btn btn-primary'>Unlike</a>
+  {% endif %}
+
   </div>
 </div>
 
