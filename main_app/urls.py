@@ -30,6 +30,7 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
     #Chatroom URLS
-    path('chat/', views.chatindex, name='chatindex')
+    path('chat/', views.chatindex, name='chatindex'),
+    path('chat/<str:room_name>/', views.room, name='room'),
 ]
 

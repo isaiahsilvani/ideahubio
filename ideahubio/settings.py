@@ -53,7 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ideahubio.urls'
 
-ASGI_APPLICATION = "ideahubio.asgi.application"
+ASGI_APPLICATION = "ideahubio.routing.application"
 
 TEMPLATES = [
     {

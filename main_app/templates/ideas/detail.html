@@ -57,6 +57,7 @@
   {% elif idea.user != user %}
       <a href="{% url 'unlike_idea' idea.id %}"><i class="fas fa-thumbs-up fa-3x"></i></a>
   {% endif %}
+      <a href="#"><i class="fas fa-comments fa-3x"></i></a>
   {% if idea.user == user and idea.is_public == True%}
   <div class='liked'>
     <br>
