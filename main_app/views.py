@@ -49,6 +49,8 @@ def make_private(request, idea_id):
 #     'employee': employee
 #   })
 
+
+
 class UpdateEmployee(UpdateView):
   model = Employee
   fields = ['role', 'function', 'auth_level']
@@ -65,8 +67,13 @@ def like_idea(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
   liked = Liked.objects.create(user=request.user, idea=idea)
   liked.save()
+  return redirect('detail', idea_id=idea_id)
+  
 
-  return render('detail', idea_id=idea_id)
+def unlike_idea(request, idea_id):
+  idea = Idea.objects.get(id=idea_id)
+  Liked.objects.get(idea=idea, user=request.user).delete()
+  return redirect('detail', idea_id=idea_id)
 
 
 def delete_photo(request, photo_id, idea_id):
