@@ -24,9 +24,13 @@
   {% endif %}
 </div>
 
+
+
 <div class="card text-center" style="width: 40%; margin: 1rem; min-width: 285px;">
   <div class="card-body" style='text-align: left;'>
     <h2 class="card-title">{{ idea.name }}</h2>
+    {{ liked }}
+    {{ user_liked }}
     <h4 class='card-subtitle'>{{ idea.industry }}</h4>
     {% if idea.user != user%}
     <p class="card-subtitle">Created by {{ idea.user }}</p>
@@ -44,10 +48,10 @@
     <a href="{% url 'idea_delete' idea.id %}"><button class='btn btn-danger'>Delete Idea</button></a>
   {% endif %}
 
-  {% if idea.user != user and not user in idea.liked_set.all %}
+  {% if idea.user != user and not user_liked %}
       <a href="{% url 'like_idea' idea.id %}" class='btn btn-primary'>Like</a>
-  {% elif idea.user != user%}
-      <a href="#" class='btn btn-primary'>Unlike</a>
+  {% elif idea.user != user %}
+      <a href="{% url 'unlike_idea' idea.id %}" class='btn btn-primary'>Unlike</a>
   {% endif %}
   {% if idea.user == user and idea.is_public == True%}
   <div class='liked'>

@@ -21,7 +21,8 @@ def home(request):
 @login_required
 def ideas_detail(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
-  return render(request, 'ideas/detail.html', {'idea': idea})
+  user_liked = idea.liked_set.filter(user=request.user).exists()
+  return render(request, 'ideas/detail.html', {'idea': idea, 'user_liked': user_liked})
 
 def public_list(request):
   idea = Idea.objects.filter(is_public=True)
@@ -64,7 +65,8 @@ def like_idea(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
   liked = Liked.objects.create(user=request.user, idea=idea)
   liked.save()
-  return redirect('detail', idea_id=idea_id)
+
+  return render('detail', idea_id=idea_id)
 
 
 def delete_photo(request, photo_id, idea_id):
@@ -175,6 +177,11 @@ class IdeaUpdate(LoginRequiredMixin, UpdateView):
   model = Idea
   fields = ['name', 'description', 'industry', 'is_public']
 
+#CHAT ROOM CODE
 def chatindex(request):
   return render(request, 'chat/index.html')
 
+def room(request, room_name):
+    return render(request, 'chat/room.html', {
+        'room_name': room_name
+    })
