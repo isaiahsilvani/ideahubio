@@ -19,7 +19,11 @@
   </div>
   {% else %}
   <div class='card-footer'>
-    {{ users_liked }} people like this idea
+    {% if idea.liked_set.all|length > 1 %}
+    {{ idea.liked_set.all|length }} people liked this idea
+    {% elif idea.liked_set.all|length == 1%}
+    1 person liked this idea
+    {% endif %}
   </div>
   {% endif %}
 </div>
