@@ -74,7 +74,7 @@ INDUSTRIES = (
 class Idea(models.Model):
   name = models.CharField(max_length=70)
   logo_url = models.CharField(default="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/ProhibitionSign2.svg/1200px-ProhibitionSign2.svg.png", max_length=300)
-  description = models.CharField(max_length=10000)
+  description = models.TextField(max_length=10000)
   is_public = models.BooleanField(default=False)
   people_interested = models.CharField(max_length=100)
   date = models.DateTimeField(default=datetime.now, blank=True)

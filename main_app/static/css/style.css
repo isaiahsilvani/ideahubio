@@ -8,9 +8,17 @@ body {
   min-height: calc(100vh - 35px);
   background-image: url(../images/lightbulb.jpeg);
 }
+
 .footer {
   height: 35px;
-  background-color: grey;
+  background-color: black;
+  color: white;
+  text-align: center;
+  align-content: center;
+}
+
+.footer p {
+  padding-top: 0.5rem;
 }
 
 main {
@@ -54,7 +62,8 @@ img {
   margin-bottom: 1rem;
   border-radius: 30px;
   border: 3px solid black;
-  background-color: white;
+  box-shadow: 5px 5px 5px black;
+  background-color: #ebf6fa;
 }
 
 @keyframes gradient {
@@ -133,6 +142,9 @@ img {
 
 #logocard {
   text-align: left;
+}
+.card {
+  background-color: #ebf6fa;
 }
 
 .employee-list {
@@ -222,4 +234,25 @@ table {
 .home-page h6:hover {
   font-style: italic;
   text-decoration: underline;
+}
+
+.navbar {
+  background-color: black;
+}
+
+.forgot {
+  height: 50%;
+  flex-direction: column
+}
+
+.done ul{
+  list-style: none;
+}
+
+.done label {
+  display: block;
+}
+
+.done .btn {
+  width: 50%;
 }

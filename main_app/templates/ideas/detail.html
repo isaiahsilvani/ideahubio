@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div id='logo_card' class="card text-center" style="width: 40%; margin: 1rem; min-width: 285px;">
+<div id='logo_card h-100' class="card text-center" style="width: 40%; margin: 1rem; min-width: 285px;">
   <div class="img-wrap">
     <img id='detail_logo' src="{{ idea.logo_url }}" style="width: 18rem; justify-self: center;" >
     {% if idea.logo_url != 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/ProhibitionSign2.svg/1200px-ProhibitionSign2.svg.png' and idea.user == user%}
@@ -16,6 +16,10 @@
         <input type="file" name="photo-file">
         <input type="submit" class="btn btn-primary" value="Upload Photo" style='margin-top: 0.4rem;'>
     </form>
+  </div>
+  {% else %}
+  <div class='card-footer'>
+    # of likes here if public
   </div>
   {% endif %}
 </div>
@@ -31,21 +35,25 @@
     <h5>Description: </h5>
     <p class="card-text">{{ idea.description }}</p>
     {% if idea.user == user %}
-    <a href="{% url 'idea_delete' idea.id %}"><button>Delete Idea</button></a>
-    <a href="{% url 'idea_update' idea.id %}"><button>Edit Idea</button></a>
-    {% if idea.is_public == False %}
-      <a href="{%  url 'make_public' idea.id%}"><button>Make Public</button></a>
+        {% if idea.is_public == False %}
+          <a href="{%  url 'make_public' idea.id%}"><button class='btn btn-primary'>Make Public</button></a>
     {% else %}
-      <a href="{%  url 'make_private' idea.id%}"><button>Make Private</button></a>
+      <a href="{%  url 'make_private' idea.id%}"><button class='btn btn-primary'>Make Private</button></a>
     {% endif %}
+    <a href="{% url 'idea_update' idea.id %}"><button class='btn btn-secondary'>Edit Idea</button></a>
+    <a href="{% url 'idea_delete' idea.id %}"><button class='btn btn-danger'>Delete Idea</button></a>
   {% endif %}
 
   {% if idea.user != user and not user in idea.liked_set.all %}
       <a href="{% url 'like_idea' idea.id %}" class='btn btn-primary'>Like</a>
-  {% else %}
+  {% elif idea.user != user%}
       <a href="#" class='btn btn-primary'>Unlike</a>
-  {% endif %}i
-
+  {% endif %}
+  {% if idea.user == user and idea.is_public == True%}
+  <div class='liked'>
+    # of likes here if public
+  </div>
+  {% endif %}
   </div>
 </div>
 
@@ -91,7 +99,7 @@
             <td>{{ employee.auth_level }}</td>
           <tr>
         {% empty %}
-          <h4> You don't have any employees yet </h4>
+          <h4 style='display: block'> No employees listed yet </h4>
         {% endfor %}
         </tbody>
       </table>
