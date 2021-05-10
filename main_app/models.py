@@ -96,7 +96,7 @@ class Idea(models.Model):
 class Liked(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
-
+# TEST
   def __str__(self):
     return f"{self.user.username}"
 
