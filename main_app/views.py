@@ -175,3 +175,6 @@ class IdeaUpdate(LoginRequiredMixin, UpdateView):
   model = Idea
   fields = ['name', 'description', 'industry', 'is_public']
 
+def chatindex(request):
+  return render(request, 'chat/index.html')
+
