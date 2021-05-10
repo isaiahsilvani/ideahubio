@@ -71,6 +71,8 @@ INDUSTRIES = (
     ('Other','Other'),
 )
 
+
+
 class Idea(models.Model):
   name = models.CharField(max_length=70)
   logo_url = models.CharField(default="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/ProhibitionSign2.svg/1200px-ProhibitionSign2.svg.png", max_length=300)
@@ -91,6 +93,13 @@ class Idea(models.Model):
   def get_absolute_url(self):
       return reverse("detail", kwargs={"idea_id": self.id})
 
+class Liked(models.Model):
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"{self.user.username}"
+
 class Employee(models.Model):
   role = models.CharField(max_length=80)
   auth_level = models.IntegerField()
@@ -99,13 +108,6 @@ class Employee(models.Model):
 
   def __str__(self):
     return f"Employee for idea_id {self.idea_id}"
-
-class Liked(models.Model):
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
-  idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
-
-  def __str__(self):
-    return f"{self.user.username}"
   
 
 # class Industry(models.Model):

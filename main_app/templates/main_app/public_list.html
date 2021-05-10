@@ -15,7 +15,12 @@
     {% if idea.user != user%}
     <p class="card-subtitle p-1">Created by {{ idea.user }}</p>
     {% endif %}
-
+    <!-- Conditional liked statement here -->
+    {% if idea.liked_set.all|length > 1 %}
+    <p>{{ idea.liked_set.all|length }} people liked this idea</p>
+    {% elif idea.liked_set.all|length == 1%}
+    <p> 1 person liked this idea</p>
+    {% endif %}
     <p class="card-text">{{ idea.description }}</p>
     <a id='detail-btn' href="{% url 'detail' idea.id %}" class="btn btn-primary align-self-end">View Details</a>
   </div>
