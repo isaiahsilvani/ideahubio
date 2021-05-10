@@ -21,8 +21,9 @@ def home(request):
 @login_required
 def ideas_detail(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
+  users_liked = len(idea.liked_set.all())
   user_liked = idea.liked_set.filter(user=request.user).exists()
-  return render(request, 'ideas/detail.html', {'idea': idea, 'user_liked': user_liked})
+  return render(request, 'ideas/detail.html', {'idea': idea, 'user_liked': user_liked, 'users_liked': users_liked})
 
 def public_list(request):
   idea = Idea.objects.filter(is_public=True)

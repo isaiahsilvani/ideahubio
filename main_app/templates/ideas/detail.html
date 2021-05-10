@@ -19,7 +19,7 @@
   </div>
   {% else %}
   <div class='card-footer'>
-    # of likes here if public
+    {{ users_liked }} people like this idea
   </div>
   {% endif %}
 </div>
@@ -49,13 +49,18 @@
   {% endif %}
 
   {% if idea.user != user and not user_liked %}
-      <a href="{% url 'like_idea' idea.id %}" class='btn btn-primary'>Like</a>
+      <a href="{% url 'like_idea' idea.id %}"><i class="far fa-thumbs-up fa-3x"></i></a>
   {% elif idea.user != user %}
-      <a href="{% url 'unlike_idea' idea.id %}" class='btn btn-primary'>Unlike</a>
+      <a href="{% url 'unlike_idea' idea.id %}"><i class="fas fa-thumbs-up fa-3x"></i></a>
   {% endif %}
   {% if idea.user == user and idea.is_public == True%}
   <div class='liked'>
-    # of likes here if public
+    <br>
+    {% if users_liked == 0 %}
+    No one has liked your idea yet
+    {% else %}
+    {{ users_liked }} people like your idea
+    {% endif %}
   </div>
   {% endif %}
   </div>
