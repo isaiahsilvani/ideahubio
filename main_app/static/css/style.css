@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+
+body {
+  font-family: 'PT Sans', sans-serif;
+}
 .content {
   min-height: calc(100vh - 35px);
+  background-image: url(../images/lightbulb.jpeg);
 }
 .footer {
   height: 35px;
-  background-color: blue;
+  background-color: grey;
 }
 
 main {
@@ -34,21 +41,37 @@ img {
 }
 
 .form-block {
-  background-color: lightcoral;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  font-size: 1.4rem;
   text-align: center;
   padding: 3rem;
   margin-top: 4rem;
   width: 80%;
-  height: 30rem;
+  height: 40rem;
+  margin-bottom: 1rem;
   border-radius: 30px;
+  border: 3px solid black;
+  background-color: white;
 }
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
 .form-block input {
-  width: 90%;
+  width: 75%;
   margin: 0.6rem;
 }
 
@@ -136,4 +159,67 @@ table {
 
 .employee_form td {
   margin: 54rem;
+}
+
+.form-block > h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.login-alt {
+  font-size: 1rem;
+}
+
+#sign-btn {
+  font-size: 1.5rem;
+  width: 60%;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.login {
+  height: 75%;
+}
+
+.login .btn {
+  font-size: 1.5rem;
+  width: 40%;
+  position: relative;
+}
+
+.login a {
+  font-size: 1rem;
+}
+
+.home-page {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home-page h1 {
+  font-size: 7rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.home-page h4 {
+  font-size: 2.8rem;
+  margin-bottom: 4rem;
+}
+
+.home-page h6 {
+  font-size: 1.8rem;
+}
+
+.home-page a {
+  text-decoration: none;
+  color: white;
+}
+
+.home-page h6:hover {
+  font-style: italic;
+  text-decoration: underline;
 }

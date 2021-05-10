@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% block title %} IdeaHub.io | Login{% endblock %}
 {% block content %}
+<div class='form-block login'>
+  <h1>Log In</h1>
 
-<h1>Log In</h1>
-
-<form method='post' action="{% url 'login' %}">
-  {% csrf_token %}
-  {{ form.as_p}}
-  <input type='submit' class='btn' value='login'>
-  <input type='hidden' name='next' value="{{ next }}">
-  <br>
-  <br>
-  <a href="{% url 'password_reset' %}">Forgotten your password?</a>
-</form>
+  <form method='post' action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type='submit' class='btn btn-primary' value='login'>
+    <input type='hidden' name='next' value="{{ next }}">
+    <br><br>
+    <a href="{% url 'password_reset' %}">Forgotten your password?</a>
+  </form>
+</div>
 
 {% endblock %}

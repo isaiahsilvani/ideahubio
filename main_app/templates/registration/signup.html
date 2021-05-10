@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class='form-block'>
-  <h1>Sign Up</h1>
+  <h1 class='form-title'>Sign Up</h1>
   {% if error_message %}
     <p class="red-text">{{ error_message }}</p>
   {% endif %}
@@ -20,9 +20,10 @@
       {{ form.password1 }}<br>
       
       {{ form.password2.label_tag }}<br>
-      {{ form.password2 }}<br><br>
+      {{ form.password2 }}<br>
       
-    <input type="submit" class="btn btn-primary" value="signup">
+    <input id='sign-btn' type="submit" class="btn btn-primary" value="signup">
+    <a class='login-alt' href=''><p>Already have an account? Log in</p></a>
   </form>
 </div>
 
