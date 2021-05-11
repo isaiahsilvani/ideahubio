@@ -261,14 +261,15 @@ table {
 
 
 #chatroom {
-  background-color: goldenrod;
+  background: linear-gradient(to right, #000046, #1CB5E0);
   color: white;
   margin: 0;
   padding: 0;
-  height: 80vh;
+  height: 76vh;
   width: 90%;
   margin-top: 2rem;
   border-radius: 15px;
+  border: 2px rgb(1, 122, 122) solid;
 }
 
 .userMsg {
@@ -300,7 +301,7 @@ table {
 }
 
 .chatroom-header {
-  border-bottom: 4px solid grey;
+  border-bottom: 4px solid rgb(1, 122, 122);
   text-align: center;
   font-size: 2rem;
   padding: 2px;
@@ -310,8 +311,20 @@ table {
 #chat-log {
   height: 73%;
   overflow-y: scroll;
+  border-bottom: 1px solid rgb(1, 122, 122);
+  background-color: white;
 }
 
 .chatcontrols {
   height: 7%;
+}
+
+#chat-message-input {
+  width: 50%;
+}
+
+.chatcontrols {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
