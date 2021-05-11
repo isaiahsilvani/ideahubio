@@ -120,7 +120,7 @@ class Employee(models.Model):
 
   # def __str__(self):
   #   return f"The industry is {self.get_industry_display()} for idea_id: {self.idea_id}"
-# add
+# add this message
 class Photo(models.Model):
   url = models.CharField(max_length=200)
   idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
