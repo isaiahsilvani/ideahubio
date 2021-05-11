@@ -256,3 +256,47 @@ table {
 .done .btn {
   width: 50%;
 }
+
+#chatroom {
+  background-color: goldenrod;
+  color: white;
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  width: 90%;
+  margin-top: 2rem;
+}
+
+.userMsg {
+  background-color: lightblue;
+  text-align: right;
+  display: block;
+  margin: 1.3rem;
+  margin-left: 8rem;
+  font-size: 1.3rem;
+  padding: 8px;
+  padding-right: 10px;
+  border-radius: 14px;
+}
+
+.OtheruserMsg {
+  background-color: lightgreen;
+  text-align: left;
+  display: block;
+  margin: 1.3rem;
+  margin-right: 8rem;
+  font-size: 1.3rem;
+  padding: 8px;
+  padding-left: 10px;
+  border-radius: 14px;
+}
+
+#chat-message-submit {
+  font-size: 1rem;
+}
+
+.chatroom-header {
+  border-bottom: 4px solid grey;
+  text-align: center;
+  padding: 2px;
+}

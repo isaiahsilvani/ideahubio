@@ -31,6 +31,6 @@ urlpatterns = [
 
     #Chatroom URLS
     path('chat/', views.chatindex, name='chatindex'),
-    path('chat/<str:room_name>/', views.room, name='room'),
+    path('chat/<int:room_name>/', views.room, name='room'),
 ]
 
