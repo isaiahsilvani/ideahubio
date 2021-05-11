@@ -1,11 +1,14 @@
 {% extends 'base.html'%}
-{% block title%}Chat{% endblock %}
+{% block title%}{{ idea.name }}'s Chat{% endblock %}
+{% load static %}
 {% block content%}
     <div id='chatroom'>
-        <h1 class='chatroom-header'> Welcome to {{ idea.name }}'s Chatroom</h1>
+        <div class='chatroom-header'> Welcome to {{ idea.name }}'s Chatroom</div>
         <div id="chat-log" cols="100" rows="20"></div><br>
-        <input id="chat-message-input" type="text" size="100"><br>
-        <input id="chat-message-submit" type="button" value="Send">
+        <div class='chatcontrols'>
+            <input id="chat-message-input" type="text" size="100"><br>
+            <input id="chat-message-submit" type="button" value="Send">
+        </div>
         {{ room_name|json_script:"room-name" }}
         {{ request.user.username|json_script:"user_username" }}
         <script>
@@ -22,16 +25,24 @@
             chatSocket.onmessage = function(e) {
                 const data = JSON.parse(e.data);
                 let msg = document.createElement('p')
+                // function to scroll chat view to new message
+                function scrollToBottom() {
+                    let messages = document.querySelector('#chat-log').lastElementChild
+                    console.log(messages)
+                    messages.scrollIntoView()
+                }
                 // If data.username == user, give different class. Else, give another class (so we can style)
                 if (data.username == user_username) {
                     msg.innerText = data.message
                     msg.className = 'userMsg'
                     document.querySelector('#chat-log').append(msg)
+                    
                 } else {
                     msg.innerText = data.username + ": "  + data.message
                     msg.className = 'OtheruserMsg'
                     document.querySelector('#chat-log').append(msg)
                 }
+                scrollToBottom()
                 // document.querySelector('#chat-log').value += (data.username + ": "  + data.message + '\n');
             };
 

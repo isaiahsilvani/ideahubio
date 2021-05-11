@@ -257,14 +257,18 @@ table {
   width: 50%;
 }
 
+
+
+
 #chatroom {
   background-color: goldenrod;
   color: white;
   margin: 0;
   padding: 0;
-  height: 70vh;
+  height: 80vh;
   width: 90%;
   margin-top: 2rem;
+  border-radius: 15px;
 }
 
 .userMsg {
@@ -298,5 +302,16 @@ table {
 .chatroom-header {
   border-bottom: 4px solid grey;
   text-align: center;
+  font-size: 2rem;
   padding: 2px;
+  height: 10%;
+}
+
+#chat-log {
+  height: 73%;
+  overflow-y: scroll;
+}
+
+.chatcontrols {
+  height: 7%;
 }
