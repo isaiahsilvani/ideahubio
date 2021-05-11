@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import django
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '280r9-)j&_)kt*nb5*6px)5i66t1&^q+8#_k*nbmwog)m^85hq'
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "your_project.settings")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -56,7 +59,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ideahubio.urls'
 
-ASGI_APPLICATION = "ideahubio.asgi.application"
+ASGI_APPLICATION = "ideahubio.routing.application"
 
 TEMPLATES = [
     {
@@ -89,7 +92,6 @@ DATABASES = {
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
