@@ -35,7 +35,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = text_data_json['message']
         username = text_data_json['username']
         # This is where the code breaks
-        Message.objects.create(user=username, text=message)
+        async def storeMsg():
+            await Message.objects.create(user=username, text=message)
+        storeMsg()
         # This is where the data is received
 
         # Send message to room group
