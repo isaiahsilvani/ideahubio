@@ -130,5 +130,11 @@ class Photo(models.Model):
   
 class Message(models.Model):
   text = models.CharField(max_length=1000)
-  room = models.IntegerField()
   user = models.CharField(max_length=500)
+  timestamp = models.DateTimeField(auto_now_add=True)
+
+  def __str__(self):
+    return self.text
+
+  def last_30_messages(self):
+    return Message.objects.order_by('-timestamp').all()[:30]
