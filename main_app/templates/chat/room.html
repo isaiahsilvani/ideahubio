@@ -6,8 +6,11 @@
         <div class='chatroom-header'> Welcome to {{ idea.name }}'s Chatroom</div>
         <div id="chat-log" cols="100" rows="20"></div><br>
         <div class='chatcontrols'>
-            <input id="chat-message-input" type="text" size="100"><br>
-            <input id="chat-message-submit" type="button" value="Send">
+            <form action="{% url 'store_message' idea.id %}" method='POST'>
+                <input id="chat-message-input" type="text" size="100" name='message'><br>
+                <input id="chat-message-submit" type="button" value="Send">
+                <input hidden value="{{ user.username }}" name='username'>
+            </form>
         </div>
         {{ room_name|json_script:"room-name" }}
         {{ request.user.username|json_script:"user_username" }}
@@ -43,6 +46,8 @@
                     document.querySelector('#chat-log').append(msg)
                 }
                 scrollToBottom()
+                // DO SOMETHING TO ADD TO DATABASE. 
+
                 // document.querySelector('#chat-log').value += (data.username + ": "  + data.message + '\n');
             };
 

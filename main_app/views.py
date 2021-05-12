@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import UserCreationForm
-from .models import Idea, Photo, Employee, Liked
+from .models import Idea, Photo, Employee, Liked, Message
 
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -41,6 +41,15 @@ def make_private(request, idea_id):
   idea.is_public = False
   idea.save()
   return redirect('detail', idea_id=idea_id)
+
+def store_message(request, room_id):
+  message = Message.objects.create(
+    user = request.POST.get('username'),
+    text = request.POST.get('message'),
+    room = room_id
+  )
+  message.save()
+  return redirect('room', room_name=room_id)
 
 # def update_employee(request, idea_id, employee_id):
 #   idea = Idea.objects.get(id=idea_id)

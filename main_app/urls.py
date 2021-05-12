@@ -32,5 +32,6 @@ urlpatterns = [
     #Chatroom URLS
     path('chat/', views.chatindex, name='chatindex'),
     path('chat/<int:room_name>/', views.room, name='room'),
+    path('chat/storemessage/<int:room_id>/', views.store_message, name='store_message')
 ]
 
