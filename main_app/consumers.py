@@ -32,8 +32,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
         username = text_data_json['username']
         room = text_data_json['room']
         # This is where the code breaks
-        # await self.save_message(username, room, message)
-        await Message.objects.create(user=username, text=message, room=room)
+        await self.save_message(username, room, message)
+        # await Message.objects.create(user=username, text=message, room=room)
         # This is where the data is received
 
         # Send message to room group
@@ -58,5 +58,5 @@ class ChatConsumer(AsyncWebsocketConsumer):
         }))
 
     # @DatabaseSyncToAsync
-    # def save_message(self, username, room, message):
-    #     Message.objects.create(user=username, room=room, text=message)
+    def save_message(self, username, room, message):
+        Message.objects.create(user=username, room=room, text=message)
