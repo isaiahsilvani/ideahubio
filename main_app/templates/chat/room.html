@@ -7,8 +7,9 @@
         <div id="chat-log" cols="100" rows="20"></div><br>
         <div class='chatcontrols'>
             <form action="{% url 'store_message' idea.id %}" method='POST'>
+                {% csrf_token %}
                 <input id="chat-message-input" type="text" size="100" name='message'><br>
-                <input id="chat-message-submit" type="button" value="Send">
+                <input id="chat-message-submit" type="submit" value="Send">
                 <input hidden value="{{ user.username }}" name='username'>
             </form>
         </div>
