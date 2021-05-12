@@ -1,13 +1,10 @@
 # chat/consumers.py
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from asgiref.sync import sync_to_async
+from channels.db import DatabaseSyncToAsync
 from .models import Message
 
 class ChatConsumer(AsyncWebsocketConsumer):
-
-    def store_message(self, username, content):
-        Message.objects.create(user=username, text=content)
 
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
@@ -59,6 +56,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'username': username
         }))
 
-    @sync_to_async
+    @DatabaseSyncToAsync
     def save_message(self, username, room, message):
         Message.objects.create(user=username, room=room, text=message)
