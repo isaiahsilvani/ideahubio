@@ -38,6 +38,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         @database_sync_to_async
         def storeMsg():
             message = Message.objects.create(user=username, text=message)
+            message.save()
         storeMsg()
         # This is where the data is received
 
