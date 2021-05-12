@@ -34,10 +34,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         username = text_data_json['username']
-        asyncio.sleep(1)
-        await database_sync_to_async(Message.objects.create(text=message, user=username))
-
-
+        # This is where the code breaks
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name,
