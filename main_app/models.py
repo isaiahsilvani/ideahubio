@@ -128,3 +128,7 @@ class Photo(models.Model):
   def __str__(self):
       return f"Photo for idea_id {self.idea_id} @ {self.url}"
   
+class Message(models.Model):
+  text = models.CharField(max_length=1000)
+  room = models.IntegerField()
+  user = models.CharField(max_length=500)
