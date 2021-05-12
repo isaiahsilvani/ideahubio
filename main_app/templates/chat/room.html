@@ -62,7 +62,7 @@
                 const message = messageInputDom.value;
                 chatSocket.send(JSON.stringify({
                     'message': message,
-                    'username': user_username,s
+                    'username': user_username
                 }));
                 messageInputDom.value = '';
             };
