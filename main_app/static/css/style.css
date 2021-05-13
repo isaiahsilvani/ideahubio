@@ -329,3 +329,7 @@ table {
 .fa-comments {
   margin-left: 5px;
 }
+
+.navbar-collapse {
+  margin-left: 1rem;
+}
