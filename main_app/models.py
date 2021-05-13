@@ -133,8 +133,6 @@ class Photo(models.Model):
 class Message(models.Model):
   text = models.CharField(max_length=1000)
   user = models.CharField(max_length=500)
-  room = models.CharField(max_length=10)
-  timestamp = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
     return self.text
