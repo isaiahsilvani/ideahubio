@@ -30,7 +30,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         username = text_data_json['username']
-        room = text_data_json['room']
         # This is where the code breaks
         
         # await Message.objects.create(user=username, text=message, room=room)
