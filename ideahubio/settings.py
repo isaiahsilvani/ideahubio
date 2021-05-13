@@ -15,6 +15,7 @@ from pathlib import Path
 import os
 import dj_database_url
 import django
+import django_on_heroku
 import environ
 env = environ.Env()
 environ.Env.read_env()
@@ -144,9 +145,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ideahub.bot@gmail.com'
 EMAIL_HOST_PASSWORD = 'BotSoda420'
 
-# Configure Django App for Heroku.
-import django_on_heroku
-django_on_heroku.settings(locals())
+
 
 CHANNEL_LAYERS = {
     'default': {
@@ -156,3 +155,7 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+# Configure Django App for Heroku.
+import django_on_heroku
+django_on_heroku.settings(locals())
