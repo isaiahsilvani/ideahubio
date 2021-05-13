@@ -2,7 +2,6 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import DatabaseSyncToAsync
-from .models import Message
 
 class ChatConsumer(AsyncWebsocketConsumer):
 
@@ -31,6 +30,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = text_data_json['message']
         username = text_data_json['username']
         # This is where the code breaks
+        
         # await Message.objects.create(user=username, text=message, room=room)
         # This is where the data is received
 
@@ -54,5 +54,3 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'message': message,
             'username': username
         }))
-
-    # @DatabaseSyncToAsync
