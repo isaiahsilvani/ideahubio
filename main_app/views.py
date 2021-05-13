@@ -200,9 +200,7 @@ def chatindex(request):
 
 def room(request, room_name):
     idea = Idea.objects.get(id=room_name)
-    messages = Message.objects.filter(room=room_name)
     return render(request, 'chat/room.html', {
         'room_name': room_name,
-        'idea': idea,
-        'messages': messages
+        'idea': idea
     })
