@@ -43,6 +43,7 @@ ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'main_app',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
