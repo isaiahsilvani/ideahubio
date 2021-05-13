@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '280r9-)j&_)kt*nb5*6px)5i66t1&^q+8#_k*nbmwog)m^85hq'
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "your_project.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ideahubio.settings")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
