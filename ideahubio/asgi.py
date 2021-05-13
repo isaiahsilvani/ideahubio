@@ -22,4 +22,4 @@ from django.core.asgi import get_asgi_application
 django.setup()
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ideahubio.settings')
 
-application = get_asgi_application()
+application = get_default_application()
