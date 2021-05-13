@@ -257,9 +257,6 @@ table {
   width: 50%;
 }
 
-
-
-
 #chatroom {
   background: linear-gradient(to right, #000046, #1CB5E0);
   color: white;
@@ -327,4 +324,8 @@ table {
   display: flex;
   justify-content: center;
   flex-direction: row;
+}
+
+.fa-comments {
+  margin-left: 5px;
 }

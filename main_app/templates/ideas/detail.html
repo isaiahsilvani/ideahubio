@@ -33,8 +33,6 @@
 <div class="card text-center" style="width: 40%; margin: 1rem; min-width: 285px;">
   <div class="card-body" style='text-align: left;'>
     <h2 class="card-title">{{ idea.name }}</h2>
-    {{ liked }}
-    {{ user_liked }}
     <h4 class='card-subtitle'>{{ idea.industry }}</h4>
     {% if idea.user != user%}
     <p class="card-subtitle">Created by {{ idea.user }}</p>
@@ -57,7 +55,9 @@
   {% elif idea.user != user %}
       <a href="{% url 'unlike_idea' idea.id %}"><i class="fas fa-thumbs-up fa-3x"></i></a>
   {% endif %}
+  {% if idea.is_public != False %}
       <a href="{% url 'room' idea.id %}"><i class="fas fa-comments fa-3x"></i></a>
+  {% endif %}
   {% if idea.user == user and idea.is_public == True%}
   <div class='liked'>
     <br>
