@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if idea.user != user and idea.is_public == False %}
+<h1 style='color: white; margin-top: 2.5em;'>This idea is private</h1>
+{% else %}
 
 <div id='logo_card h-100' class="card text-center" style="width: 40%; margin: 1rem; min-width: 285px;">
   <div class="img-wrap">
@@ -143,5 +146,7 @@
 
   </div>
 </div>
+
+{% endif %}
 
 {% endblock %}

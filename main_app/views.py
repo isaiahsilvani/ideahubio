@@ -25,23 +25,27 @@ def ideas_detail(request, idea_id):
   user_liked = idea.liked_set.filter(user=request.user).exists()
   return render(request, 'ideas/detail.html', {'idea': idea, 'user_liked': user_liked, 'users_liked': users_liked})
 
+@login_required
 def public_list(request):
   idea = Idea.objects.filter(is_public=True)
   idea = idea.exclude(user=request.user)
   return render(request, 'main_app/public_list.html', {'idea': idea})
 
+@login_required
 def make_public(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
   idea.is_public = True
   idea.save()
   return redirect('detail', idea_id=idea_id)
 
+@login_required
 def make_private(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
   idea.is_public = False
   idea.save()
   return redirect('detail', idea_id=idea_id)
 
+@login_required
 def store_message(request, room_id):
   message = Message.objects.create(
     user = request.POST.get('username'),
@@ -61,10 +65,11 @@ def store_message(request, room_id):
 
 
 
-class UpdateEmployee(UpdateView):
+class UpdateEmployee(LoginRequiredMixin, UpdateView):
   model = Employee
   fields = ['role', 'function', 'auth_level']
 
+@login_required
 def update_employee_done(request, employee_id):
   employee = Employee.objects.get(id=employee_id)
   employee.auth_level = request.POST.get('authlevel')
@@ -73,30 +78,32 @@ def update_employee_done(request, employee_id):
   employee.save()
   return redirect('detail', idea_id=employee.idea_id)
 
+@login_required
 def like_idea(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
   liked = Liked.objects.create(user=request.user, idea=idea)
   liked.save()
   return redirect('detail', idea_id=idea_id)
   
-
+@login_required
 def unlike_idea(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
   Liked.objects.get(idea=idea, user=request.user).delete()
   return redirect('detail', idea_id=idea_id)
 
-
+@login_required
 def delete_photo(request, photo_id, idea_id):
   Photo.objects.get(id=photo_id).delete()
   return redirect('detail', idea_id=idea_id)
 
+@login_required
 def delete_logo(request, idea_id):
   idea = Idea.objects.get(id=idea_id)
   idea.logo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/ProhibitionSign2.svg/1200px-ProhibitionSign2.svg.png"
   idea.save()
   return redirect('detail', idea_id=idea_id)
 
-
+@login_required
 def add_photo(request, idea_id):
   # photo-file will be the "name" attribute on the <input type="file">
   photo_file = request.FILES.get('photo-file', None)
@@ -116,12 +123,14 @@ def add_photo(request, idea_id):
       print('An error occurred uploading file to S3: %s' % err)
   return redirect('detail', idea_id=idea_id)
 
+@login_required
 def delete_employee(request, employee_id, idea_id):
   employee = Employee.objects.get(id=employee_id)
   print('hit this')
   employee.delete()
   return redirect('detail', idea_id=idea_id)
 
+@login_required
 def add_employee(request, idea_id):
   employee = Employee.objects.create(
     role=request.POST['role'], 
@@ -132,7 +141,7 @@ def add_employee(request, idea_id):
   employee.save()
   return redirect('detail', idea_id=idea_id)
 
-
+@login_required
 def add_logo(request, idea_id):
   # get the idea, remove the old URL, replace it.
   idea = Idea.objects.get(id=idea_id)
@@ -195,9 +204,11 @@ class IdeaUpdate(LoginRequiredMixin, UpdateView):
   fields = ['name', 'description', 'industry', 'is_public']
 
 #CHAT ROOM CODE
+@login_required
 def chatindex(request):
   return render(request, 'chat/index.html')
 
+@login_required
 def room(request, room_name):
     idea = Idea.objects.get(id=room_name)
     return render(request, 'chat/room.html', {
