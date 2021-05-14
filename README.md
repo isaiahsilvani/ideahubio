@@ -17,9 +17,9 @@ In order to use the full functionality of this app, users must be signup an acco
  Todd just graduated from a Coding Bootcamp, and is now thinking about a creating a startup company. But, before Todd invests time and money into making his dreams a reality, he would like to gain some honest feedback from people other than friends and family. So, Todd goes on IdeaHubIO, creates his idea using the New Idea form, and sets his idea to public so others can see it. Todd now sees that 20 people liked his idea, and there is an active discussion in his idea's chatroom. With all the positive feedback recieved from the users of IdeaHubIO, Todd knows he has a great idea and is now ready to truly pursue it.
 
 ## Application Screenshots
-![Application Screenshot 1](https://i.imgur.com/F7lvqgy.png)
-![Application Screenshot 2](https://i.imgur.com/8MegUfr.png)
-![Application Screenshot 3](https://i.imgur.com/z2G2xjQ.png)
+![Application Screenshot 1](https://i.imgur.com/OKHnubY.png)
+![Application Screenshot 2](https://i.imgur.com/foXHAuU.png)
+![Application Screenshot 3](https://i.imgur.com/2qpXIiF.png)
 ## Technologies Used
 Django, Python, Postgresql, JavaScript, Django Channels, HTML5, CSS3
 
