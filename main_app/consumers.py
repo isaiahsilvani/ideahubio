@@ -23,7 +23,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {
                 'type': 'chat_message',
                 'message': 'New user joined the chat',
-                'username': 'Bot'
+                'username': 'Chat Bot'
             }
         )
 
@@ -34,7 +34,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {
                 'type': 'chat_message',
                 'message': 'New user left the chat',
-                'username': 'Bot'
+                'username': 'Chat Bot'
             }
         )
         # Leave room group
