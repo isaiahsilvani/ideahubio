@@ -23,11 +23,20 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {
                 'type': 'chat_message',
                 'message': 'New user joined the chat',
-                'username': 'bot'
+                'username': 'Bot'
             }
         )
 
     async def disconnect(self, close_code):
+
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                'type': 'chat_message',
+                'message': 'New user left the chat',
+                'username': 'Bot'
+            }
+        )
         # Leave room group
         await self.channel_layer.group_discard(
             self.room_group_name,
