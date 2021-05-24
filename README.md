@@ -1,6 +1,6 @@
 # IDEAHUBI, AN IDEA SHARING APP
 ### Thank you for checking out my application!
-## Create and share your next startup idea [now!](https://ideahubio.herokuapp.com/)
+## Create and share your next startup idea [now!](https://www.ideahubio.com/)
 
 ## Description
 The purpose of this app is to allow users to have a platform to not only create and store their business ideas for future reference, but also to bring innovators together to discuess these ideas. The social application allows users to make their ideas public, have those ideas liked, and even further discuss the idea in a real time chatroom using Web Sockets.
